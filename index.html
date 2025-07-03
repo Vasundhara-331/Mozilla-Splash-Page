@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mozilla Splash Page</title>
+<style>
+  *, *::before, *::after {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc, #43cea2, rgb(245, 165, 16), rgb(223, 11, 11));
+    background-size: 400% 400%;
+    animation: gradientShift 12s ease infinite;
+    color: #f0f0f0;
+    min-height: 100vh;
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .container {
+    max-width: 1100px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .logo {
+    font-weight: 900;
+    font-size: 3.6rem;
+    letter-spacing: 0.18em;
+    margin-bottom: 2rem;
+    color: #fff;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.45);
+    animation: float 4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .hero-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  }
+
+  .hero-subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+    opacity: 0.85;
+    font-weight: 500;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2.2rem;
+    margin: 4rem 0 5rem;
+  }
+
+  .feature {
+    background: rgba(255, 255, 255, 0.12);
+    padding: 2.5rem 2rem;
+    border-radius: 18px;
+    backdrop-filter: saturate(180%) blur(16px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+  }
+  .feature:hover, .feature:focus-within {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 38px rgba(0,0,0,0.25);
+  }
+
+  .feature h3 {
+    font-size: 1.65rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+
+  .feature p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #e0e0e0;
+  }
+
+  .audio-section {
+    margin: 4rem 0;
+    background: rgba(30, 30, 30, 0.3);
+    padding: 2.8rem 2rem;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .audio-section h2 {
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  }
+
+  .audio-section audio {
+    width: 100%;
+    border-radius: 12px;
+    outline-offset: 6px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.35);
+    transition: box-shadow 0.3s ease;
+  }
+  .audio-section audio:focus {
+    box-shadow: 0 0 12px 3px #6a11cb;
+  }
+
+  .audio-section p {
+    margin-top: 1rem;
+    color: #bbb;
+    font-style: italic;
+  }
+
+  .firefox-showcase {
+    display: flex;
+    gap: 2.8rem;
+    align-items: center;
+    margin: 4rem 0 5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .firefox-showcase img {
+    width: 320px;
+    height: 220px;
+    border-radius: 18px;
+    object-fit: cover;
+    box-shadow: 0 14px 38px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease;
+  }
+  .firefox-showcase img:hover {
+    transform: scale(1.05);
+  }
+
+  .firefox-text {
+    flex: 1 1 320px;
+    text-align: left;
+    max-width: 480px;
+  }
+
+  .firefox-text h3 {
+    font-size: 2.1rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+
+  .firefox-text p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #ddd;
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    background:#2575fc;    
+    color: #fefefe;
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-decoration: none;
+    border-radius: 60px;
+    box-shadow: 0 10px 28px rgba(38,0,102,0.7);
+    border: none;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    user-select: none;
+  }
+  .cta-button:hover,
+  .cta-button:focus {
+    background:#2575fc;
+    box-shadow: 0 16px 40px rgba(38,0,102,0.85);
+    transform: translateY(-6px) scale(1.05);
+    outline: none;
+  }
+  .cta-button:active {
+    transform: translateY(-2px) scale(0.95);
+    box-shadow: 0 7px 20px rgba(38,0,102,0.6);
+  }
+
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.4rem;
+    }
+    .hero-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .firefox-showcase {
+      flex-direction: column;
+      text-align: center;
+    }
+    .firefox-text {
+      text-align: center;
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .logo {
+      font-size: 2.8rem;
+      letter-spacing: 0.12em;
+    }
+    .hero-title {
+      font-size: 1.8rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container" role="main">
+    <header>
+      <h1 class="logo" aria-label="Mozilla">Mozilla</h1>
+    </header>
+
+    <section aria-labelledby="hero-title">
+      <h2 id="hero-title" class="hero-title">Internet for People</h2>
+      <p class="hero-subtitle">Building a better web for everyone.</p>
+    </section>
+
+    <section class="features" aria-label="Features of Mozilla">
+      <article class="feature" tabindex="0">
+        <h3>Firefox Browser</h3>
+        <p>Fast, private, and secure browsing.</p>
+      </article>
+      <article class="feature" tabindex="0">
+        <h3>Privacy First</h3>
+        <p>Privacy is a fundamental human right.</p>
+      </article>
+      <article class="feature" tabindex="0">
+        <h3>Open Web</h3>
+        <p>Supporting open standards for all.</p>
+      </article>
+    </section>
+
+    <section class="audio-section" aria-label="Mozilla's Story Audio">
+      <h2>Listen to Mozilla's Story</h2>
+      <audio controls preload="metadata" aria-describedby="audio-desc">
+        <source src="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3" type="audio/mpeg" />
+        <source src="https://file-examples.com/storage/fe86eaa9f74d89b5c2282c2/2017/11/file_example_MP3_700KB.mp3" type="audio/mpeg" />
+        <p>Your browser does not support the audio element. <a href="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3">Download the audio</a> instead.</p>
+      </audio>
+      <p id="audio-desc" style="margin-top: 1rem; color: #bbb; font-style: italic;"></p>
+    </section>
+
+    <section class="firefox-showcase" aria-label="Firefox browser promotion">
+      <img src="https://i.extremetech.com/imagery/content-types/0310vEDv4mp4VVPFRuJSDHA/hero-image.fit_lim.v1678673131.jpg" alt="Firefox Browser Showcase" />
+      <div class="firefox-text">
+        <h3>Download Firefox</h3>
+        <p>Experience the web the way it should be - fast, private, and yours.</p>
+      </div>
+    </section>
+
+    <button class="cta-button" aria-label="Join the Mozilla Mission">Join the Mission</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const ctaButton = document.querySelector('.cta-button');
+      ctaButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        this.style.transform = 'translateY(-3px) scale(0.98)';
+        setTimeout(() => {
+          this.style.transform = 'translateY(-5px) scale(1)';
+        }, 100);
+        setTimeout(() => {
+          alert('Thanks for your interest in Mozilla! Visit mozilla.org to learn more.');
+        }, 200);
+      });
+
+      const audio = document.querySelector('audio');
+      audio.addEventListener('error', function() {
+        const fallbackText = this.parentElement.querySelector('p');
+        if (fallbackText) {
+          fallbackText.style.display = 'block';
+          fallbackText.style.color = '#ffd93d';
+          fallbackText.style.fontWeight = 'bold';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
